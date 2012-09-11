@@ -1,0 +1,24 @@
+<resources>
+
+    <string name="app_name">多功能查询工具</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_welcome">欢迎界面</string>
+    <string name="welcome">欢迎使用</string>
+    <string name="statement">申明:</string>
+    <string name="welcome_statement">该软件的所有服务来源于网络，感谢他们的支持！</string>
+    <string name="query">查询</string>
+    <string name="query_number">查号码归属地</string>
+    <string name="query_weather">查询城市天气</string>
+    <string name="query_identity">查询身份证信息</string>
+    <string name="query_hint">请输入要查询的手机号码</string>
+    <string name="query_hint2">请输入要查询的城市名称</string>
+    <string name="query_hint3">请输入要查询的身份证号</string>
+    <string name="phone_hint">请输入手机号码的前7位</string>
+    <string name="city_hint">比如：北京、上海、南京</string>
+    <string name="identiy_hint">请输入15或18位的身份证号</string>
+    <string name="about_1">该查询结果来自网络</string>
+    <string name="about_2">感谢http://www.webxml.com.cn/提供支持</string>
+    
+
+</resources>
