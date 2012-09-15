@@ -2,9 +2,18 @@ package com.xinyin.android;
 
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.AlertDialog.Builder;
+import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.xinyin.android.util.DBHelper;
 import com.xinyin.android.util.ServiceCtrl;
 
 public class QueryWeatherActivity extends BaseActivity {
@@ -26,6 +36,9 @@ public class QueryWeatherActivity extends BaseActivity {
 	TextView next_4_time,next_4_wea,next_4_temp;
 	LinearLayout result_l;
 	TextView result_null;
+	DBHelper dbHelper;
+	SQLiteDatabase database;
+	Cursor cursor;
 	
 
 	@Override
@@ -33,6 +46,7 @@ public class QueryWeatherActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.query_weather);
 		initView();
+		dbHelper = new DBHelper(this);
 		dialog = ProgressDialog.show(QueryWeatherActivity.this, "", "查询中，请稍后....");
 		dialog.dismiss();
 		query_btn.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +54,16 @@ public class QueryWeatherActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				String cityname = weather_et.getText().toString();
+				database = dbHelper.getWritableDatabase();
+				cursor = database.rawQuery("select * from "
+						+ DBHelper.TABLE_NAME_WEATHER, null);
+				if(!compare(cityname, cursor)){
+					ContentValues cv = new ContentValues();
+					cv.put("cityName", cityname);
+					database.insert(DBHelper.TABLE_NAME_WEATHER, null, cv);
+				}
+				cursor.close();
+				database.close();
 				QueryWeatherTask task = new QueryWeatherTask();
 				task.execute(cityname);
 			}
@@ -179,5 +203,48 @@ public class QueryWeatherActivity extends BaseActivity {
 			super.onPreExecute();
 		}
 		
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		menu.add(0, Menu.FIRST + 1, Menu.NONE, "查询记录");
+		menu.add(0, Menu.FIRST + 2, Menu.NONE, "清空查询记录");
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		database = dbHelper.getWritableDatabase();
+		if (item.getItemId() == Menu.FIRST + 1) {
+			cursor = database.rawQuery("select * from "
+					+ DBHelper.TABLE_NAME_WEATHER, null);
+			AlertDialog.Builder builder = new Builder(this);
+			builder.setTitle("最近的查询记录");
+			builder.setCursor(cursor, new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					cursor.moveToPosition(which);
+					weather_et.setText(cursor.getString(1));
+					cursor.close();
+				}
+			}, "cityName");
+			builder.create().show();
+		}
+		if (item.getItemId() == Menu.FIRST + 2) {
+			database.delete(DBHelper.TABLE_NAME_WEATHER, null, null);
+		}
+		database.close();
+		return true;
+	}
+	private static boolean compare(String order, Cursor c) {
+		boolean flag = false;
+		while (c.moveToNext()) {
+			if (order.equals(c.getString(1))) {
+				flag = true;
+			}
+		}
+		return flag;
 	}
 }

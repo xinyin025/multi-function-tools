@@ -11,6 +11,8 @@
     <string name="query_number">查号码归属地</string>
     <string name="query_weather">查询城市天气</string>
     <string name="query_identity">查询身份证信息</string>
+    <string name="query_kuaidi">快递查询</string>
+    <string name="query_qqonline">QQ在线状态查询</string>
     <string name="query_hint">请输入要查询的手机号码</string>
     <string name="query_hint2">请输入要查询的城市名称</string>
     <string name="query_hint3">请输入要查询的身份证号</string>

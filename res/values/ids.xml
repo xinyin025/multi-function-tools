@@ -6,6 +6,9 @@
     <!-- Button -->
     <item type="id" name="query_number_btn">false</item>
     <item type="id" name="query_weather_btn">false</item>
+    <item type="id" name="query_identity_btn">false</item>
+    <item type="id" name="query_kuaidi_btn">false</item>
+    <item type="id" name="query_qqonline_btn">false</item>
     <item type="id" name="query_btn">false</item>
     <item type="id" name="close_btn">false</item>
     

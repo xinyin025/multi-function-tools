@@ -44,6 +44,12 @@
         <activity android:name="QueryIdentityActivity">
             
         </activity>
+        <activity android:name="QueryKuaidiActivity">
+            
+        </activity>
+        <activity android:name="QueryQQonlineActivity">
+            
+        </activity>
     </application>
 
 </manifest>

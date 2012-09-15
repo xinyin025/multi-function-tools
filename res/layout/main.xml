@@ -55,7 +55,7 @@
                 />
 
             <Button
-                android:id="@+id/query_identity_btn"
+                android:id="@id/query_identity_btn"
                 android:layout_width="fill_parent"
                 android:layout_height="80dp"
                 android:layout_weight="1.0"
@@ -64,6 +64,44 @@
                 android:text="@string/query_identity"
                 android:textColor="@color/blueviolet" />
         </LinearLayout>
+        
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+            android:id="@id/query_kuaidi_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_weight="0.60"
+            android:background="@color/whitesmoke"
+            android:gravity="center"
+            android:text="@string/query_kuaidi"
+            android:textColor="@color/red" />
+            <View 
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                />
+
+            <Button
+                android:id="@id/query_qqonline_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:layout_weight="0.40"
+                android:background="@color/red"
+                android:gravity="center"
+                android:text="@string/query_qqonline"
+                android:textColor="@color/whitesmoke" />
+        </LinearLayout>
+
+        
     </LinearLayout>
 
 </RelativeLayout>
