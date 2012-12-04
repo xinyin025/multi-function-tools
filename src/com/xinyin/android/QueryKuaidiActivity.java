@@ -29,7 +29,7 @@ import com.xinyin.android.util.ServiceCtrl;
 import com.xinyin.android.widget.ListViewHeight;
 
 public class QueryKuaidiActivity extends BaseActivity {
-	EditText orderid_et;
+	EditText orderid_et,et2;
 	Button com_btn, query_btn;
 	ListView result_lv;
 	String[] coms_zhongwen = { "顺丰", "圆通", "中通", "韵达", "汇通", "宅急送", "德邦",
