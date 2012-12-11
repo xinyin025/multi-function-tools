@@ -32,9 +32,9 @@ public class QueryKuaidiActivity extends BaseActivity {
 	EditText orderid_et,et2;
 	Button com_btn, query_btn;
 	ListView result_lv;
-	String[] coms_zhongwen = { "顺丰", "圆通", "中通", "韵达", "汇通", "宅急送", "德邦",
+	String[] coms_zhongwen = { "顺丰", "圆通", "中通","天天", "韵达", "汇通", "宅急送", "德邦",
 			"EMS", "申通" ,"如风达","全峰"};
-	String[] coms_pinyin = { "shunfeng", "yuantong", "zhongtong", "yunda",
+	String[] coms_pinyin = { "shunfeng", "yuantong", "zhongtong", "tiantian","yunda",
 			"huitongkuaidi", "zhaijisong", "debangwuliu", "ems", "shentong","rufengda","quanfengkuaidi" };
 	String com, com_c, order;
 	TextView result_tv;
